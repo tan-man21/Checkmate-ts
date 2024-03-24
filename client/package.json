@@ -1,6 +1,8 @@
 {
-  "name": "my-react-app",
+  "name": "client",
   "version": "0.1.0",
+  "description": "A React frontend app",
+  "author": "Nathan B, Edward G, Mark L, Tanner R",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
