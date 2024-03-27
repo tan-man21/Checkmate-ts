@@ -2,11 +2,10 @@ import React from "react";
 import testLogo from './logo192.png'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function Navigation() {
     return (
-        <Navbar expand='lg' bg='dark' data-bs-theme='dark' className="py-1">
+        <Navbar fixed='top' expand='lg' bg='dark' data-bs-theme='dark' className="py-1 px-1">
             <Navbar.Brand href="#">
                 <img src={testLogo} alt="testing using react logo" width={'30'} height={'30'} className="d-inline-block align-top" />
                 Checkmate
