@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
     })
 })
 
+
+//CONTROLLERS
+const tasksController = require('/controllers/tasks_controller.js')
+app.use('/tasks', tasksController)
+
 // LISTEN
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`)
