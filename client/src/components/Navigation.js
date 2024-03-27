@@ -1,10 +1,24 @@
 import React from "react";
+import testLogo from './logo192.png'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 
 function Navigation() {
     return (
-        <div>
-            Test
-        </div>
+        <Navbar expand='lg' bg='dark' data-bs-theme='dark' className="py-1">
+            <Navbar.Brand href="#">
+                <img src={testLogo} alt="testing using react logo" width={'30'} height={'30'} className="d-inline-block align-top" />
+                Checkmate
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls='basic-navbar-nav' />
+            <Navbar.Collapse id='basic-navbar-nav'>
+                <Nav className="ms-auto">
+                <Nav.Link href="#">My Lists</Nav.Link>
+                <Nav.Link href='#'>My Account</Nav.Link>
+            </Nav>
+            </Navbar.Collapse>
+        </Navbar>
     )
 }
 
