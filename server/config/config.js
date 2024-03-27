@@ -3,7 +3,7 @@ require('dotenv').config()
 module.exports = {
   development: {
     username: "postgres",
-    password: DB_PASS,
+    password: process.env.DB_PASS,
     database: "checkmate",
     host: "localhost",
     port: 5433,
