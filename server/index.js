@@ -11,7 +11,7 @@ app.use(express.json())
 //ROOT
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: 'Checkmate'
+        message: 'CheckMate'
     })
 })
 
@@ -25,6 +25,9 @@ const sequelizeTest = async () => {
         console.error('Unable to connect to the database:', error);
       }
 }
+//CONTROLLERS
+const tasksController = require('/controllers/tasks_controller.js')
+app.use('/tasks', tasksController)
 
 // LISTEN
 app.listen(PORT, async () => {
