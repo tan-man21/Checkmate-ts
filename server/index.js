@@ -1,6 +1,7 @@
 //DEPENDENCIES
 const express = require('express')
 const app = express()
+const { Sequelize } = require('sequelize')
 
 // CONFIG/MIDDLEWARE
 require('dotenv').config()
@@ -10,10 +11,9 @@ app.use(express.json())
 //ROOT
 app.get('/', (req, res) => {
     res.status(200).json({
-        message: 'Checkmate'
+        message: 'CheckMate'
     })
 })
-
 
 //CONTROLLERS
 const tasksController = require('/controllers/tasks_controller.js')
