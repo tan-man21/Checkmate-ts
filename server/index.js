@@ -1,6 +1,7 @@
 //DEPENDENCIES
 const express = require('express')
 const app = express()
+const { Sequelize } = require('sequelize')
 
 // CONFIG/MIDDLEWARE
 require('dotenv').config()
@@ -14,7 +15,19 @@ app.get('/', (req, res) => {
     })
 })
 
+//DATABASE CONNECTION
+const sequelize = new Sequelize(process.env.DB_CONNECTION)
+const sequelizeTest = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Database connection has been established successfully.');
+      } catch (error) {
+        console.error('Unable to connect to the database:', error);
+      }
+}
+
 // LISTEN
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+    await sequelizeTest();
     console.log(`Listening on port: ${PORT}`)
 })
