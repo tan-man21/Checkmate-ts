@@ -6,7 +6,7 @@ module.exports = {
     password: process.env.DB_PASS,
     database: "checkmate",
     host: "localhost",
-    port: 5433,
+    port: process.env.PORT,
     dialect: "postgres"
   }
   // "test": {
