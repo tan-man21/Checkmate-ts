@@ -18,6 +18,18 @@
   color: white;
 }
 
+.heroText {
+  text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
 .descriptiveContainer {
   text-align: center;
 }
