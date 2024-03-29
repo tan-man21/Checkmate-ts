@@ -1,13 +1,13 @@
 //DEPENDENCIES
 const tasks = require('express').Router()
 const db = require('../models')
-const { Tasks } = db
+const { Task } = db
 
 // ALL TASKS
 tasks.get('/', async (req, res) => {
     try {
-        const foundTasks = await Tasks.All()
-        res.status(200).json(allTasks)
+        const foundTasks = await Task.findAll()
+        res.status(200).json(foundTasks)
     } catch (error) {
         res.status(500).json(error)
     }
@@ -16,7 +16,7 @@ tasks.get('/', async (req, res) => {
 //FIND A SPECIFIC TASK
 tasks.get('/:id', async (req, res) => {
     try {
-        const foundTask = await Tasks.findOne({
+        const foundTask = await Task.findOne({
             where: { task_id: req.params.id }
         })
         res.status(200).json(foundTask)
