@@ -4,7 +4,7 @@ import "../App.css";
 const Checklist = () => {
   const [editItemId, setEditItemId] = useState(null);
   const [inputText, setInputText] = useState("");
-  const [items, setItems] = useState([{ id: 1, text: "Item" }]);
+  const [items, setItems] = useState([{ id: 1, text: "Item", checked: false }]);
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -39,6 +39,14 @@ const Checklist = () => {
     );
   };
 
+  const toggleChecked = (id) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
   const createNewListItem = () => {
     const newListItem = { id: items.length + 1, text: inputText };
     setItems([...items, newListItem]);
@@ -49,8 +57,13 @@ const Checklist = () => {
   return (
     <div>
       <ul className="checkList">
-        {items.map((item, index) => (
+        {items.map((item) => (
           <li key={item.id} onClick={() => whenClickedOn(item.id)}>
+            <input 
+            type="checkbox"
+            checked={item.checked}
+            onChange={() => toggleChecked(item.id)}
+            />
             {editItemId == item.id && (
               <input
                 type="text"
@@ -60,7 +73,7 @@ const Checklist = () => {
                 ref={inputRef}
               />
             )}
-            {!editItemId || editItemId !== item.id ? item.text: null}
+            {!editItemId || editItemId !== item.id ? item.text : null}
           </li>
         ))}
 
