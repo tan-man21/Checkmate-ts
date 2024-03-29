@@ -25,8 +25,9 @@ const sequelizeTest = async () => {
         console.error('Unable to connect to the database:', error);
       }
 }
+
 //CONTROLLERS
-const tasksController = require('/controllers/tasks_controller.js')
+const tasksController = require('./controllers/tasks_controller')
 app.use('/tasks', tasksController)
 
 // LISTEN
