@@ -31,6 +31,9 @@ const sequelizeTest = async () => {
 const tasksController = require('./controllers/tasks_controller')
 app.use('/tasks', tasksController)
 
+// const listsController = require('./controllers/lists_controller')
+// app.use('/lists', listsController)
+
 // LISTEN
 app.listen(PORT, async () => {
     await sequelizeTest();
