@@ -5,7 +5,7 @@ import '../App.css'
 function Hero() {
     return (
         <div className="heroContainer px-2 pt-3 mt-5">
-            <div className="mt-5">
+            <div className="mt-1">
                 <h1 className="heroText">
                     Welcome to Checkmate!
                 </h1>

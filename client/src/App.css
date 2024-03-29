@@ -33,3 +33,23 @@
 .descriptiveContainer {
   text-align: center;
 }
+
+.listItem {
+  border: 1px solid black;
+  margin-bottom: 1em;
+  margin-left: calc(50% - 100px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.listItem.scroll-reveal {
+  margin-left: 0;
+  opacity: 1;
+}
+
+
+footer {
+  text-align: left;
+  font-size: 0.75em;
+  color: slategray;
+}
