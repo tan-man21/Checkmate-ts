@@ -6,7 +6,7 @@ const { Tasks } = db
 // ALL TASKS
 tasks.get('/', async (req, res) => {
     try {
-        const foundTasks = await Tasks.All()
+        const foundTasks = await Tasks.findAll()
         res.status(200).json(allTasks)
     } catch (error) {
         res.status(500).json(error)
