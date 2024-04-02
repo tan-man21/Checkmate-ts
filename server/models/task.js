@@ -1,7 +1,10 @@
 'use strict';
 const {
-  Model
+  Model, Deferrable
 } = require('sequelize');
+
+const List = require('./list')
+
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     /**
@@ -9,8 +12,17 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
+    static associate({ List, SubTask }) {
       // define association here
+      Task.belongsTo(List, {
+        foreignKey: 'list_id',
+        as: 'list'
+      })
+
+      Task.hasMany(SubTask, {
+        foreignKey: 'task_id',
+        as: 'subtasks'
+      })
     }
   }
   Task.init({
@@ -29,7 +41,15 @@ module.exports = (sequelize, DataTypes) => {
     date_started: DataTypes.DATE,
     date_due: DataTypes.DATE,
     date_completed: DataTypes.DATE,
-    user_id: DataTypes.INTEGER
+    list_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      reference: {
+        model: List,
+        key: 'list_id',
+        deferrable: Deferrable.INITIALLY_IMMEDIATE
+      }
+    }
   }, {
     sequelize,
     modelName: 'Task',

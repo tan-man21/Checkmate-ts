@@ -26,7 +26,6 @@ const sequelizeTest = async () => {
       }
 }
 
-
 //CONTROLLERS
 const tasksController = require('./controllers/tasks_controller')
 app.use('/tasks', tasksController)
