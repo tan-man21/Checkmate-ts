@@ -2,7 +2,6 @@
 const lists = require('express').Router()
 const db = require('../models')
 const { List, Task, SubTask } = db
-const { Op } = require('sequelize')
 
 //FIND ALL LISTS
 lists.get('/', async (req, res) => {
