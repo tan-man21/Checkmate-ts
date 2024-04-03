@@ -1,6 +1,7 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
+
 
 .heroContainer {
   display: flex;
@@ -32,21 +33,41 @@
 
 .descriptiveContainer {
   text-align: center;
+  height: 15vh;
 }
+
 
 .listItem {
-  border: 1px solid black;
+  opacity: 0.5;
+  transform: translateX(-90%);
+  border: 3px solid black;
   margin-bottom: 1em;
-  margin-left: calc(50% - 100px);
-  opacity: 0;
-  transition: opacity 0.5s ease;
+  transition: transform 0.75s ease;
 }
 
-.listItem.scroll-reveal {
-  margin-left: 0;
-  opacity: 1;
+.descripDiv {
+  border-left: 2px solid slategray;
 }
 
+.descriptiveContainer:hover .listItem{
+  animation: pullIn 1s forwards;
+}
+
+.descriptiveContainer:not(:hover) .listItem {
+  transform: translateX(-90%)
+}
+
+@keyframes pullIn {
+  from {
+    opacity: 0.5;
+    transform: translateX(-90%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0)
+  }
+  
+}
 
 footer {
   text-align: left;
