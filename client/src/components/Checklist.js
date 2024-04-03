@@ -8,13 +8,13 @@ const Checklist = () => {
   const [editItemId, setEditItemId] = useState(null);
   const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([
-    { id: 1, text: "Item 1", checked: false, subItems: [] },
-    { id: 2, text: "Item 2", checked: false, subItems: [] },
+    { id: 1, text: "", checked: false, subItems: [] },
   ]);
   const inputRef = useRef(null);
 
 // removes text input box when clicked outside
   useEffect(() => {
+
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
         whenClickedAway();
@@ -29,7 +29,8 @@ const Checklist = () => {
 
 
 //opens text input box when clicked on
-  const whenClickedOn = (id) => {
+  const whenClickedOn = (id, event) => {
+    if (event.target.tagName === 'INPUT') return;
     if (editItemId === id) {
       return;
     }
@@ -109,7 +110,7 @@ const Checklist = () => {
     <div>
       <ol className="checkList">
         {items.map((item) => (
-          <li className="mainListItem" key={item.id} onClick={() => whenClickedOn(item.id)}>
+          <li className="mainListItem" key={item.id} onClick={(event) => whenClickedOn(item.id, event)}>
             <input
               type="checkbox"
               className="checkBox"
@@ -127,7 +128,7 @@ const Checklist = () => {
             ) : (
               <span className={item.checked ? "checkedItem" : ""}
               style={{ textDecoration: item.checked ? "line-through" : "none" }}>
-                {item.text}
+                {item.text || "Add Item"}
               </span>
             )}
             <ul>

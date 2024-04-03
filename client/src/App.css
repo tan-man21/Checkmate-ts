@@ -3,7 +3,8 @@
 }
 
 .addItemButton {
-  background-color: aquamarine;
+  color: #f5f5f5;
+  background-color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +19,8 @@
 }
 
 .addSubItemButton {
-  background-color: aquamarine;
+  color: #f5f5f5;
+  background-color: #333;
   display: flex;
   display: flex;
   justify-content: center;
@@ -32,6 +34,7 @@
 
 .checkBox {
   margin-right: 0.5rem;
+  background-color: black;
 }
 
 .checkList {
