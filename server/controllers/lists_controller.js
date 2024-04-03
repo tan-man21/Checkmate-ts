@@ -1,7 +1,7 @@
 // DEPENDENCIES
 const lists = require('express').Router()
 const db = require('../models')
-const { List } = db
+const { List, Task, SubTask } = db
 const { Op } = require('sequelize')
 
 //FIND ALL LISTS
@@ -18,7 +18,17 @@ lists.get('/', async (req, res) => {
 lists.get('/:id', async (req, res) => {
     try {
         const foundList = await List.findOne({
-            where: { list_id: req.params.id }
+            where: { list_id: req.params.id },
+            include: [
+                {
+                    model: Task, as: 'tasks',
+                    include: [
+                        {
+                            model: SubTask, as: 'subtasks'
+                        }
+                    ]
+                }
+            ]
         })
         res.status(200).json(foundList)
     } catch (error) {
