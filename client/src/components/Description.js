@@ -6,8 +6,33 @@ import Col from 'react-bootstrap/Col'
 
 function Description() {
     //Animations
-    
+    let scrollEvent = false
+    const scrollThreshold = 1.2
 
+    window.addEventListener('scroll', () => {
+        if(!scrollEvent) {
+            const items = document.querySelectorAll('.listItem')
+            function check() {
+                items.forEach(item => {
+                    const pullHeight = (window.scrollY + window.innerHeight * scrollThreshold) - item.clientHeight / 2
+                    const itemBottom = item.offsetTop + item.clientHeight
+                    const visible = pullHeight > item.offsetTop
+                    const notScrolledPast = window.scrollY < itemBottom
+                    if(visible && notScrolledPast) {
+                        item.classList.add('pullIn')
+                    }else{
+                        item.classList.remove('pullIn')
+                    }
+                })
+            }
+            check()
+            scrollEvent = true
+        }
+    })
+
+    window.addEventListener('load', () => {
+        scrollEvent = false
+    })
     
     return(
         <div className='descriptiveContainer mt-3'>

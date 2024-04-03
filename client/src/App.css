@@ -38,36 +38,23 @@
 
 
 .listItem {
-  opacity: 0.5;
-  transform: translateX(-90%);
   border: 3px solid black;
   margin-bottom: 1em;
-  transition: transform 0.75s ease;
+  opacity: 0.5;
+  transform: translateX(-90%);
+  transition: opacity 0.5s, transform 0.5s;
 }
+
+.pullIn {
+  opacity: 1;
+  transform: translateX(0)
+}
+
 
 .descripDiv {
   border-left: 2px solid slategray;
 }
 
-.descriptiveContainer:hover .listItem{
-  animation: pullIn 1s forwards;
-}
-
-.descriptiveContainer:not(:hover) .listItem {
-  transform: translateX(-90%)
-}
-
-@keyframes pullIn {
-  from {
-    opacity: 0.5;
-    transform: translateX(-90%);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0)
-  }
-  
-}
 
 footer {
   text-align: left;
