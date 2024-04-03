@@ -3,6 +3,7 @@ import "../App.css";
 
 // ChatGPT contributed significantly to this code
 
+// sets up checklist shell
 const Checklist = () => {
   const [editItemId, setEditItemId] = useState(null);
   const [inputText, setInputText] = useState("");
@@ -12,6 +13,7 @@ const Checklist = () => {
   ]);
   const inputRef = useRef(null);
 
+// removes text input box when clicked outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -25,6 +27,8 @@ const Checklist = () => {
     };
   }, []);
 
+
+//opens text input box when clicked on
   const whenClickedOn = (id) => {
     if (editItemId === id) {
       return;
@@ -32,10 +36,12 @@ const Checklist = () => {
     setEditItemId(id);
   };
 
+
   const whenClickedAway = () => {
     setEditItemId(null);
   };
 
+// sets text in input box to new text and accounts for sub items if necessary
   const updateText = (id, newText, parentId = null) => {
     if (parentId === null) {
       setItems((prevItems) =>
@@ -59,6 +65,7 @@ const Checklist = () => {
     }
   };
 
+// switches the checkmark state of an item
   const toggleChecked = (id) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
@@ -66,6 +73,7 @@ const Checklist = () => {
       )
     );
   };
+
 
   const createNewListItem = () => {
     const newListItem = {
@@ -78,6 +86,7 @@ const Checklist = () => {
     setInputText("");
     setEditItemId(newListItem.id);
   };
+
 
   const createNewSubItem = (parentId) => {
     const parentItemIndex = items.findIndex((item) => item.id === parentId);
@@ -98,15 +107,16 @@ const Checklist = () => {
 
   return (
     <div>
-      <ul className="checkList">
+      <ol className="checkList">
         {items.map((item) => (
-          <li key={item.id} onClick={() => whenClickedOn(item.id)}>
+          <li className="mainListItem" key={item.id} onClick={() => whenClickedOn(item.id)}>
             <input
               type="checkbox"
+              className="checkBox"
               checked={item.checked}
               onChange={() => toggleChecked(item.id)}
             />
-            {editItemId == item.id ? (
+            {editItemId === item.id ? (
               <input
                 type="text"
                 value={item.text}
@@ -115,7 +125,8 @@ const Checklist = () => {
                 ref={inputRef}
               />
             ) : (
-              <span className={item.checked ? "checkedItem" : ""}>
+              <span className={item.checked ? "checkedItem" : ""}
+              style={{ textDecoration: item.checked ? "line-through" : "none" }}>
                 {item.text}
               </span>
             )}
@@ -123,20 +134,20 @@ const Checklist = () => {
               {item.subItems.map((subItem) => (
                 <li key={subItem.id}>{subItem.text}</li>
               ))}
-              <li>
-                <button onClick={() => createNewSubItem(item.id)}>
+              <li className="addSubItem">
+                <button className="addSubItemButton" onClick={() => createNewSubItem(item.id)}>
                   Add Sub Item
                 </button>
               </li>
             </ul>
-            {/* {!editItemId || editItemId !== item.id ? item.text : null} */}
+            {!editItemId || editItemId !== item.id ? "" : null}
           </li>
         ))}
 
-        <li className="addCheckListItem" onClick={createNewListItem}>
-          +
+        <li className="addItem">
+          <button className="addItemButton" onClick={createNewListItem}>+</button>
         </li>
-      </ul>
+      </ol>
     </div>
   );
 };
