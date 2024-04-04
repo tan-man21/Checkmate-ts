@@ -6,22 +6,22 @@ A To-Do list for multiple users able to create multiple lists with tasks.
 Name - Checkmate
 Edward G, Mark L, Nathan B, Tanner
 
-Parts:
+## Parts:
 PostgreSQL Database
  - Items table
  - List table
  - Sub tasks
 
-Backend API with Express and Node.js
+### Backend API with Express and Node.js
  - Express server
  - CRUD routes
  - Sequelize to interact with db
 
-React Frontend
+### React Frontend
  - Components
  - Axios or Fetch API to make HTTP requests
 
-Functionality 
+### Functionality 
  - Form component
  - Show active lists
  - Button to show completed list
@@ -33,9 +33,9 @@ Functionality
  - Clone history (optional)
  - Personalized login (optional)
 
-Style UI
+### Style UI
  - Chess theme(?)
 
-Test
+### Test
 
-Deploy
+### Deploy
