@@ -1,16 +1,18 @@
 # Checkmate
 Milestone Project 2 - PERN stack 
 
-A To-Do list for multiple users able to create multiple lists with tasks.
+A To-Do list for multiple users allowing each user to be able to create multiple lists with tasks and sub-tasks.
 
+<br>
 Name - Checkmate
 Edward G, Mark L, Nathan B, Tanner, Josh
 
+<hr>
 ## Instructions
 
 
 ## Parts:
-### PostgreSQL Database
+### PostgreSQL Database ![Postgres Icon](images/postgres.png)
 #### Edward
  - List table
     - list_id integer, primary key
