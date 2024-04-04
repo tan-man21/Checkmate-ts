@@ -12,8 +12,9 @@ Edward G, Mark L, Nathan B, Tanner, Josh
 
 
 ## Parts:
-### PostgreSQL Database ![Postgres Icon](images/postgres.png)
-#### Edward
+
+### PostgreSQL Database ![Alt text](images/postgres.png)
+
  - List table
     - list_id integer, primary key
     - list_name string
@@ -36,13 +37,13 @@ Edward G, Mark L, Nathan B, Tanner, Josh
     - date_due datetime
     - date_completed datetime
 
-### Backend API with Express and Node.js
+### Backend API with Express and Node.js ![Alt text](images/icons8-nodejs-48.png) ![Alt text](images/icons8-express-js-50.png)
 #### Mark, Tanner
  - Express server
  - CRUD routes
  - Sequelize to interact with db
 
-### React Frontend
+### React Frontend ![Alt text](images/icons8-react-40.png)
 #### Nathon, Josh
  - Components
  - Axios or Fetch API to make HTTP requests
@@ -60,7 +61,7 @@ Edward G, Mark L, Nathan B, Tanner, Josh
  - Personalized login (optional)
 
 ### Style UI
- - Chess theme(?)
+ - Chess theme
 
 ### Test
 
