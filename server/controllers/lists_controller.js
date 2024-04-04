@@ -49,9 +49,8 @@ lists.post('/', async (req, res) => {
 //UPDATE LIST
 lists.put('/:id', async (req, res) => {
     try {
-        const {list_name} = req.body
         const updatedList = await List.update(
-            { list_name },
+            req.body,
             { where: { list_id: req.params.id } }
         )
         res.status(200).json('Updated List!')
