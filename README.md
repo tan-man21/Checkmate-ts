@@ -8,7 +8,8 @@ Edward G, Mark L, Nathan B, Tanner
 
 Parts:
 PostgreSQL Database
- - Items table
+<ul>
+    <li> Items table </li>
  - List table
  - Sub tasks
 
