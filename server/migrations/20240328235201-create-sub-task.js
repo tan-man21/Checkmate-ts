@@ -3,20 +3,21 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('SubTasks', {
-      id: {
+      sub_task_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      sub_task_id: {
-        type: Sequelize.INTEGER
-      },
       list_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'List', key: 'list_id' }
       },
       task_id: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: { model: 'Task', key: 'task_id' }
       },
       sub_task_name: {
         type: Sequelize.TEXT

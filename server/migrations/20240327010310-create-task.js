@@ -3,7 +3,7 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('Tasks', {
-      id: {
+      task_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
@@ -12,23 +12,20 @@ module.exports = {
       completed: {
         type: Sequelize.BOOLEAN
       },
-      taskName: {
+      task_name: {
         type: Sequelize.TEXT
       },
-      dateCreated: {
+      date_created: {
         type: Sequelize.DATE
       },
-      dateStarted: {
+      date_started: {
         type: Sequelize.DATE
       },
-      dateDue: {
+      date_due: {
         type: Sequelize.DATE
       },
-      dateCompleted: {
+      date_completed: {
         type: Sequelize.DATE
-      },
-      userId: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
@@ -37,6 +34,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      list_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: 'List', key: 'list_id'}
       }
     });
   },
