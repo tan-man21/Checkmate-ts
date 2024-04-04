@@ -36,6 +36,29 @@ tasks.post('/', async (req, res) => {
     }
 })
 
+//UPDATE TASK
+tasks.put('/:id', async (req, res) => {
+    try {
+        const updatedTask = await task.update(
+            req.body,
+            { where: { list_id: req.params.id } }
+        )
+        res.status(200).json('Updated Task!')
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+})
 
+//DELETE TASK
+tasks.delete('/:id', async (req, res) => {
+    try {
+        const deletedTask = await Task.destroy(
+            { where: { task_id: req.params.id } }
+        )
+        res.status(200).json('Deleted Task!')
+    } catch (error) {
+        res.status(500).json(error.message)
+    }
+})
 //EXPORT
 module.exports = tasks
