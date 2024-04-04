@@ -1,7 +1,7 @@
 //DEPENDENCIES
 const tasks = require('express').Router()
 const db = require('../models')
-const { Task } = db
+const { Task, SubTask } = db
 
 // ALL TASKS
 tasks.get('/', async (req, res) => {
@@ -17,7 +17,12 @@ tasks.get('/', async (req, res) => {
 tasks.get('/:id', async (req, res) => {
     try {
         const foundTask = await Task.findOne({
-            where: { task_id: req.params.id }
+            where: { task_id: req.params.id },
+            include: [
+                {
+                    model: SubTask, as: 'subtasks'
+                }
+            ]
         })
         res.status(200).json(foundTask)
     } catch (error) {
@@ -28,8 +33,8 @@ tasks.get('/:id', async (req, res) => {
 //CREATE A TASK
 tasks.post('/', async (req, res) => {
     try {
-        const {task_name} = req.body
-        const newTask = await Task.create({task_name})
+        // const {task_name, list_id} = req.body
+        const newTask = await Task.create(req.body)
         res.status(200).json(newTask)
     } catch (error) {
         res.status(500).json(error.message)
@@ -39,9 +44,9 @@ tasks.post('/', async (req, res) => {
 //UPDATE TASK
 tasks.put('/:id', async (req, res) => {
     try {
-        const updatedTask = await task.update(
+        const updatedTask = await Task.update(
             req.body,
-            { where: { list_id: req.params.id } }
+            { where: { task_id: req.params.id } }
         )
         res.status(200).json('Updated Task!')
     } catch (error) {
