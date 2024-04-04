@@ -7,7 +7,7 @@ Name - Checkmate
 Edward G, Mark L, Nathan B, Tanner
 
 ## Parts:
-PostgreSQL Database
+### PostgreSQL Database
  - Items table
  - List table
  - Sub tasks
