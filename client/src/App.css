@@ -113,6 +113,18 @@
   border-top: 0.25rem solid #d2b48c;
 }
 
+.listType {
+  color: #f5f5f5;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.5rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  padding-bottom: 0.25rem;
+}
+
 .logoDiv {
   width: 14rem;
   height: 4.5rem;

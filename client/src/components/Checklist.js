@@ -10,11 +10,13 @@ const Checklist = () => {
   const [items, setItems] = useState([
     { id: "1", text: "", checked: false, subItems: [] },
   ]);
+  const [listType, setListType] = useState("ul");
   const inputRef = useRef(null);
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -38,7 +40,12 @@ const Checklist = () => {
     };
 
     fetchData()
-  }, []);
+  }, []); */
+
+  //
+  const toggleListType = () => {
+    setListType(listType === "ul" ? "ol" : "ul");
+  };
 
   // removes text input box when clicked outside
   useEffect(() => {
@@ -98,85 +105,110 @@ const Checklist = () => {
     setEditItemId(newListItem.id);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-
-        const response = await fetch("");
-
-        if (!response) {
-          throw new Error("Network response was not ok");
-        }
-
-        const jsonData = await response.json();
-
-        setData(jsonData);
-
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-
-        setLoading(false);
-      }
-    };
-
-    fetchData()
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>
+/*   if (loading) {
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error.message}</div>
-  }
+    return <div>Error: {error.message}</div>;
+  } */
 
   return (
     <div>
-      <ul className="checkList">
-        {items.map((item) => (
-          <li
-            className="mainListItem"
-            // sets the id key
-            key={item.id}
-            // opens textbox when clicked on
-            onClick={(event) => whenClickedOn(item.id, event)}
-          >
-            <input
-              type="checkbox"
-              className="checkBox"
-              checked={item.checked}
-              onChange={() => toggleChecked(item.id)}
-            />
-            {editItemId === item.id ? (
+      <button className="listType" onClick={toggleListType}>
+        {listType === "ul" ? "Numbered" : "Bulleted"}
+      </button>
+      {listType === "ul" ? (
+        <ul className="checkList">
+          {items.map((item) => (
+            <li
+              className="mainListItem"
+              // sets the id key
+              key={item.id}
+              // opens textbox when clicked on
+              onClick={(event) => whenClickedOn(item.id, event)}
+            >
               <input
-                type="text"
-                value={item.text}
-                onChange={(e) => updateText(item.id, e.target.value)}
-                onBlur={whenClickedAway}
-                ref={inputRef}
+                type="checkbox"
+                className="checkBox"
+                checked={item.checked}
+                onChange={() => toggleChecked(item.id)}
               />
-            ) : (
-              <span
-                className={item.checked ? "checkedItem" : ""}
-                style={{
-                  textDecoration: item.checked ? "line-through" : "none",
-                }}
-              >
-                {item.text || "Add Item"}
-              </span>
-            )}
+              {editItemId === item.id ? (
+                <input
+                  type="text"
+                  value={item.text}
+                  onChange={(e) => updateText(item.id, e.target.value)}
+                  onBlur={whenClickedAway}
+                  ref={inputRef}
+                />
+              ) : (
+                <span
+                  className={item.checked ? "checkedItem" : ""}
+                  style={{
+                    textDecoration: item.checked ? "line-through" : "none",
+                  }}
+                >
+                  {item.text || "Add Item"}
+                </span>
+              )}
 
-            {!editItemId || editItemId !== item.id ? "" : null}
+              {!editItemId || editItemId !== item.id ? "" : null}
+            </li>
+          ))}
+          <li className="addItem">
+            <button className="addItemButton" onClick={createNewListItem}>
+              +
+            </button>
           </li>
-        ))}
-        <li className="addItem">
-          <button className="addItemButton" onClick={createNewListItem}>
-            +
-          </button>
-        </li>
-      </ul>
+        </ul>
+
+      ) : (
+
+        <ol className="checkList">
+          {items.map((item) => (
+            <li
+              className="mainListItem"
+              // sets the id key
+              key={item.id}
+              // opens textbox when clicked on
+              onClick={(event) => whenClickedOn(item.id, event)}
+            >
+              <input
+                type="checkbox"
+                className="checkBox"
+                checked={item.checked}
+                onChange={() => toggleChecked(item.id)}
+              />
+              {editItemId === item.id ? (
+                <input
+                  type="text"
+                  value={item.text}
+                  onChange={(e) => updateText(item.id, e.target.value)}
+                  onBlur={whenClickedAway}
+                  ref={inputRef}
+                />
+              ) : (
+                <span
+                  className={item.checked ? "checkedItem" : ""}
+                  style={{
+                    textDecoration: item.checked ? "line-through" : "none",
+                  }}
+                >
+                  {item.text || "Add Item"}
+                </span>
+              )}
+
+              {!editItemId || editItemId !== item.id ? "" : null}
+            </li>
+          ))}
+          <li className="addItem">
+            <button className="addItemButton" onClick={createNewListItem}>
+              +
+            </button>
+          </li>
+        </ol>
+      )}
     </div>
   );
 };

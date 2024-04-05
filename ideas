@@ -1,80 +1,88 @@
-const [listType, setListType] = useState("ul");
 
-const toggleListType = () => {
-    setListType(listType === "ul" ? "ol" : "ul")
-  }
 
-    // combines the item id # with the subitem id #
-    const generateSubItemId = (parentId, subItemCount) => {
-        return `${parentId}${subItemCount}`;
-      };
-    
-      const createNewSubItem = (parentId) => {
-        setItems((prevItems) => {
-          // find index of parent item in array
-          const parentItemIndex = prevItems.findIndex(
-            (item) => item.id === parentId
-          );
-          if (parentItemIndex !== -1) {
-            // item count equals previous sub item count + 1
-            const itemCount = prevItems[parentItemIndex].subItems.length + 1;
-            // new subItem id is equal to parent id + subitem count
-            const subItemId = generateSubItemId(parentId, itemCount);
-    
-            // characteristics of new sub item
-            const newSubItem = {
+
+
+// combines the item id # with the subitem id #
+const generateSubItemId = (parentId, subItemCount) =>
+{
+  return `${ parentId}${ subItemCount}`;
+};
+
+const createNewSubItem = (parentId) =>
+{
+setItems((prevItems) =>
+{
+  // find index of parent item in array
+  const parentItemIndex = prevItems.findIndex(
+    (item) => item.id === parentId
+  );
+  if (parentItemIndex !== -1)
+  {
+    // item count equals previous sub item count + 1
+    const itemCount = prevItems[parentItemIndex].subItems.length + 1;
+    // new subItem id is equal to parent id + subitem count
+    const subItemId = generateSubItemId(parentId, itemCount);
+
+    // characteristics of new sub item
+    const newSubItem = {
               id: subItemId,
               text: inputText,
               checked: false,
             };
-            // new array for sub items attached to parent item
-            const updatedItems = [...prevItems];
-            updatedItems[parentItemIndex].subItems.push(newSubItem);
-            setInputText("");
-            setEditItemId(newSubItem.id);
-            return updatedItems;
+// new array for sub items attached to parent item
+const updatedItems = [...prevItems];
+updatedItems[parentItemIndex].subItems.push(newSubItem);
+setInputText("");
+setEditItemId(newSubItem.id);
+return updatedItems;
           }
           // return unchanged array if unfound
           return prevItems;
         });
       };
 
-      <ul>
-              {item.subItems.map((subItem) => (
-                <li key={`${subItem.id}`}>
-                  <input
-                    type="checkbox"
-                    checked={subItem.checked}
-                    onChange={() => toggleChecked(subItem.id)}
+      < ul >
+              {
+  item.subItems.map((subItem) => (
+                < li key ={`${ subItem.id}`}>
+                  < input
+                    type = "checkbox"
+                    checked={
+    subItem.checked}
+    onChange ={ () => toggleChecked(subItem.id)}
                   />
-                  <input
-                    type="text"
-                    value={subItem.text || "Add Sub Item"}
-                    onChange={(e) => updateText(subItem.id, e.target.value)}
-                    onBlur={whenClickedAway}
-                    ref={inputRef}
+                  < input
+                    type = "text"
+                    value ={ subItem.text || "Add Sub Item"}
+    onChange ={ (e) => updateText(subItem.id, e.target.value)}
+    onBlur ={ whenClickedAway}
+    ref= { inputRef }
                   />
-                  
-                </li>
+
+
+                </ li >
               ))}
-              <li className="addSubItem">
-                <button
-                  className="addSubItemButton"
-                  onClick={() => createNewSubItem(item.id)}
+              < li className = "addSubItem" >
+                < button
+                  className = "addSubItemButton"
+                  onClick ={ () => createNewSubItem(item.id)}
                 >
                   Add Sub Item
-                </button>
-              </li>
-            </ul>
+                </ button >
+              </ li >
+            </ ul >
 
-if (parentId === null) {
-} else {
+if (parentId === null)
+  {
+  }
+  else
+  {
     setItems((prevItems) =>
       prevItems.map((item) =>
         // checks if sub item
         item.id === parentId
           ? {
-              ...item,
+      ...item,
               // verifies correct id then returns updated text object
               subItems: item.subItems.map((subItem) =>
                 subItem.id === id ? { ...subItem, text: newText } : subItem
