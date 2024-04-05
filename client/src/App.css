@@ -91,18 +91,20 @@
 
 .checkBox {
   margin-right: 0.5rem;
+  margin-left: 0.5rem;
   background-color: black;
 }
 
 .checkList {
-  border: 1px solid black;
+/*   border: 1px solid black; */
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin-top: 1rem;
+  padding-left: 2rem;
 }
 
 .checkListDiv {
-  background-color: white;
+  background-color: gray;
 }
 
 .checkLogo {

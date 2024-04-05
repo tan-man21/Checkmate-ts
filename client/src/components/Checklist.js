@@ -57,15 +57,15 @@ const Checklist = () => {
 
     const handleKeyPress = (event) => {
       if (event.key === "Enter") {
-        whenClickedAway()
+        whenClickedAway();
       }
-    }
+    };
 
     document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyPress)
+    document.addEventListener("keydown", handleKeyPress);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyPress)
+      document.removeEventListener("keydown", handleKeyPress);
     };
   }, []);
 
@@ -113,7 +113,7 @@ const Checklist = () => {
     setEditItemId(newListItem.id);
   };
 
-/*   if (loading) {
+  /*   if (loading) {
     return <div>Loading...</div>;
   }
 
@@ -170,9 +170,7 @@ const Checklist = () => {
             </button>
           </li>
         </ul>
-
       ) : (
-
         <ol className="checkList">
           {items.map((item) => (
             <li
