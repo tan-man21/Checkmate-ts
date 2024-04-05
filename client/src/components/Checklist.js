@@ -55,9 +55,17 @@ const Checklist = () => {
       }
     };
 
+    const handleKeyPress = (event) => {
+      if (event.key === "Enter") {
+        whenClickedAway()
+      }
+    }
+
     document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyPress)
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyPress)
     };
   }, []);
 
@@ -114,7 +122,7 @@ const Checklist = () => {
   } */
 
   return (
-    <div>
+    <div className="checkListDiv">
       <button className="listType" onClick={toggleListType}>
         {listType === "ul" ? "Numbered" : "Bulleted"}
       </button>
