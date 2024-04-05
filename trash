@@ -1,8 +1,0 @@
-  const SubItemCharacter = () => {
-    const currentCharacter = subItems.charCodeAt(0)
-    if (currentCharacter >= 97 && currentCharacter < 122) {
-      setSubItems(String.fromCharCode(currentCharacter + 1))
-    } else {
-
-    }
-  }

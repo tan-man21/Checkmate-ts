@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../App.css";
 
-// ChatGPT contributed significantly to this code
+// **ChatGPT contributed significantly to this code**
 
 // sets up checklist shell
 const Checklist = () => {
   const [editItemId, setEditItemId] = useState(null);
   const [inputText, setInputText] = useState("");
   const [items, setItems] = useState([
-    { id: "0", text: "", checked: false, subItems: [] },
+    { id: "1", text: "", checked: false, subItems: [] },
   ]);
   const inputRef = useRef(null);
 
@@ -26,7 +26,7 @@ const Checklist = () => {
     };
   }, []);
 
-  //opens text input box when clicked on
+  // opens text input box when the input is clicked on
   const whenClickedOn = (id, event) => {
     if (event.target.tagName === "INPUT") return;
     if (editItemId === id) {
@@ -35,32 +35,16 @@ const Checklist = () => {
     setEditItemId(id);
   };
 
+  // sets input box to null(disappear) when clicked outside input
   const whenClickedAway = () => {
     setEditItemId(null);
   };
 
-  // sets text in input box to new text and accounts for sub items if necessary
-  const updateText = (id, newText, parentId = null) => {
-    if (parentId === null) {
-      setItems((prevItems) =>
-        prevItems.map((item) =>
-          item.id === id ? { ...item, text: newText } : item
-        )
-      );
-    } else {
-      setItems((prevItems) =>
-        prevItems.map((item) =>
-          item.id === parentId
-            ? {
-                ...item,
-                subItems: item.subItems.map((subItem) =>
-                  subItem.id === id ? { ...subItem, text: newText } : subItem
-                ),
-              }
-            : item
-        )
-      );
-    }
+  // sets text in input box to new text
+  const updateText = (id, newText) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, text: newText } : item))
+    );
   };
 
   // switches the checkmark state of an item
@@ -84,48 +68,15 @@ const Checklist = () => {
     setEditItemId(newListItem.id);
   };
 
-
-  const generateSubItemId = (parentId, subItemCount) => {
-    return `${parentId}${subItemCount}`;
-  };
-
-  const createNewSubItem = (parentId) => {
-    setItems((prevItems) => {
-      // find index of parent item in array
-      const parentItemIndex = prevItems.findIndex(
-        (item) => item.id === parentId
-      );
-      if (parentItemIndex !== -1) {
-
-        // create child id if found
-        const itemCount = prevItems[parentItemIndex].subItems.length + 1
-        const subItemId = generateSubItemId(parentId, itemCount)
-
-        // characteristics of new sub item
-        const newSubItem = {
-          id: subItemId,
-          text: inputText,
-          checked: false,
-        }
-        // new array for sub items attached to parent item
-        const updatedItems = [...prevItems];
-        updatedItems[parentItemIndex].subItems.push(newSubItem);
-        setInputText("");
-        setEditItemId(newSubItem.id);
-        return updatedItems;
-      }
-      // return unchanged array if unfound
-      return prevItems;
-    });
-  };
-
   return (
     <div>
-      <ol className="checkList">
+      <ul className="checkList">
         {items.map((item) => (
           <li
             className="mainListItem"
+            // sets the id key
             key={item.id}
+            // opens textbox when clicked on
             onClick={(event) => whenClickedOn(item.id, event)}
           >
             <input
@@ -152,19 +103,7 @@ const Checklist = () => {
                 {item.text || "Add Item"}
               </span>
             )}
-            <ul>
-              {item.subItems.map((subItem) => (
-                <li key={subItem.id}>{subItem.text}</li>
-              ))}
-              <li className="addSubItem">
-                <button
-                  className="addSubItemButton"
-                  onClick={() => createNewSubItem(item.id)}
-                >
-                  Add Sub Item
-                </button>
-              </li>
-            </ul>
+
             {!editItemId || editItemId !== item.id ? "" : null}
           </li>
         ))}
@@ -174,7 +113,7 @@ const Checklist = () => {
             +
           </button>
         </li>
-      </ol>
+      </ul>
     </div>
   );
 };
