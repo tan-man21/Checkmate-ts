@@ -3,7 +3,7 @@ const tasks = require('express').Router()
 const db = require('../models')
 const { Task, SubTask } = db
 
-// ALL TASKS
+// FIND ALL TASKS
 tasks.get('/', async (req, res) => {
     try {
         const foundTasks = await Task.findAll()
