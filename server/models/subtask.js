@@ -15,17 +15,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Task, List}) {
       // define association here
-      SubTask.belongsTo(Task, {
-        foreignKey: 'task_id',
-        as: 'task'
-      })
+      // SubTask.belongsTo(Task, {
+      //   foreignKey: 'task_id',
+      //   as: 'task'
+      // })
 
-      SubTask.belongsTo(List, {
-        foreignKey: 'list_id',
-        as: 'list'
-      })
+      // SubTask.belongsTo(List, {
+      //   foreignKey: 'list_id',
+      //   as: 'list'
+      // })
     }
-  }
+   }
   SubTask.init({
     sub_task_id: {
       type: DataTypes.INTEGER,
@@ -33,24 +33,24 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       primaryKey: true
     },
-    list_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      reference: {
-        model: List,
-        key: 'list_id',
-        deferrable: Deferrable.INITIALLY_IMMEDIATE
-      }
-    },
-    task_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      reference: {
-        model: Task,
-        key: 'task_id',
-        deferrable: Deferrable.INITIALLY_IMMEDIATE
-      }
-    },
+    // list_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   reference: {
+    //     model: List,
+    //     key: 'list_id',
+    //     deferrable: Deferrable.INITIALLY_IMMEDIATE
+    //   }
+    // },
+    // task_id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   reference: {
+    //     model: Task,
+    //     key: 'task_id',
+    //     deferrable: Deferrable.INITIALLY_IMMEDIATE
+    //   }
+    // },
     sub_task_name: {
       type: DataTypes.TEXT,
       allowNull: false
