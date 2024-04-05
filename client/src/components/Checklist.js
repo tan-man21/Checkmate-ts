@@ -11,6 +11,34 @@ const Checklist = () => {
     { id: "1", text: "", checked: false, subItems: [] },
   ]);
   const inputRef = useRef(null);
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        const response = await fetch("");
+
+        if (!response) {
+          throw new Error("Network response was not ok");
+        }
+
+        const jsonData = await response.json();
+
+        setData(jsonData);
+
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+
+        setLoading(false);
+      }
+    };
+
+    fetchData()
+  }, []);
 
   // removes text input box when clicked outside
   useEffect(() => {
@@ -43,7 +71,9 @@ const Checklist = () => {
   // sets text in input box to new text
   const updateText = (id, newText) => {
     setItems((prevItems) =>
-      prevItems.map((item) => (item.id === id ? { ...item, text: newText } : item))
+      prevItems.map((item) =>
+        item.id === id ? { ...item, text: newText } : item
+      )
     );
   };
 
@@ -68,7 +98,39 @@ const Checklist = () => {
     setEditItemId(newListItem.id);
   };
 
-/* const sendDataToServer =  */
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+
+        const response = await fetch("");
+
+        if (!response) {
+          throw new Error("Network response was not ok");
+        }
+
+        const jsonData = await response.json();
+
+        setData(jsonData);
+
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+
+        setLoading(false);
+      }
+    };
+
+    fetchData()
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>
+  }
 
   return (
     <div>
