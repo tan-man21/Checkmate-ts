@@ -1,3 +1,60 @@
+
+/* .App {
+  text-align: center;
+} */
+
+
+.heroContainer {
+  display: flex;
+  justify-content: right;
+  max-width: 100%;
+  max-height: 90vh;
+  height: 80vh;
+  background-image: url('./components/chess.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.heroContainer > div {
+  color: white;
+}
+
+.heroText {
+  text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}
+
+.descriptiveContainer {
+  text-align: center;
+  height: 15vh;
+}
+
+
+.listItem {
+  border: 3px solid black;
+  margin-bottom: 1em;
+  opacity: 0.5;
+  transform: translateX(-90%);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.pullIn {
+  opacity: 1;
+  transform: translateX(0)
+}
+
+
+.descripDiv {
+  border-left: 2px solid slategray;
+}
 .addItem {
   list-style-type: none;
 }
@@ -102,4 +159,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+footer {
+  text-align: left;
+  font-size: 0.75em;
+  color: slategray;
 }
