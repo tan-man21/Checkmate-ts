@@ -7,10 +7,12 @@ A To-Do list for multiple users allowing each user to be able to create multiple
 
 <br>
 Name - Checkmate
+
 Edward G, Mark L, Nathan B, Tanner, Josh
 
 <hr>
 ## Instructions
+
 To run the application locally, change to client folder. Then run 'npm install'. Add a .env folder and specify PORT, DB_URI, DB_NAME, DB_PASSWORD. Then run 'nodemon'.
 
 
