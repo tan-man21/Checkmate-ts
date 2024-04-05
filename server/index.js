@@ -25,12 +25,19 @@ const sequelizeTest = async () => {
         console.error('Unable to connect to the database:', error);
       }
 }
+
 //CONTROLLERS
-const tasksController = require('/controllers/tasks_controller.js')
+const tasksController = require('./controllers/tasks_controller')
 app.use('/tasks', tasksController)
+
+const listsController = require('./controllers/lists_controller')
+app.use('/lists', listsController)
+
+const subtasksController = require('./controllers/subtasks_controller')
+app.use('/subtasks', subtasksController)
 
 // LISTEN
 app.listen(PORT, async () => {
     await sequelizeTest();
-    console.log(`Listening on port: ${PORT}`)
+    console.log(`Listening on port: ${process.env.PORT}`)
 })

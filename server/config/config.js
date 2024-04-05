@@ -2,11 +2,11 @@ require('dotenv').config()
 
 module.exports = {
   development: {
-    username: "postgres",
+    username: process.env.DB_USER,
     password: process.env.DB_PASS,
-    database: "checkmate",
-    host: "localhost",
-    port: 5433,
+    database: process.env.DB_NAME,
+    host: "raja.db.elephantsql.com",
+    // port: process.env.DB_PORT,
     dialect: "postgres"
   }
   // "test": {

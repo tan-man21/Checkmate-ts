@@ -1,5 +1,5 @@
 # Checkmate
-Milestone Project 2 - PERN stack 
+Milestone Project 2 - PERN stack
 
 link: https://checkmate-7v5b.onrender.com
 

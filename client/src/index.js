@@ -1,14 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import Sidebar from "./components/Sidebar";
+import Checklist from "./components/Checklist";
+import reportWebVitals from "./reportWebVitals";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById("root"));
 root.render(
-    <App />
+  <React.StrictMode>
+    <div>
+      <Checklist />
+{/*       <App /> */}
+    </div>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
