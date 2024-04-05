@@ -68,6 +68,8 @@ const Checklist = () => {
     setEditItemId(newListItem.id);
   };
 
+/* const sendDataToServer =  */
+
   return (
     <div>
       <ul className="checkList">
@@ -107,7 +109,6 @@ const Checklist = () => {
             {!editItemId || editItemId !== item.id ? "" : null}
           </li>
         ))}
-
         <li className="addItem">
           <button className="addItemButton" onClick={createNewListItem}>
             +
