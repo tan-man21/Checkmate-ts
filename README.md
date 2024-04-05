@@ -71,3 +71,10 @@ To run the application locally, change to client folder. Then run 'npm install'.
 ### Test
 
 ### Deploy
+
+<br><br>
+<hr>
+## Furture enhancements
+
+- Add a sub tasks as an option for each task item
+- Allow user login to allow each user to have thier own lists to see
