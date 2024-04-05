@@ -1,10 +1,15 @@
 import React from 'react';
 import './App.css';
+import Navigation from './components/Navigation';
+import Hero from './components/Hero';
+import Description from './components/Description';
 
 function App() {
   return (
     <div className="App">
-      <h1>Cool App Stuff Here</h1>
+      <Navigation />
+      <Hero />
+      <Description />
     </div>
   );
 }
