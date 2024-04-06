@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../App.css";
 import ListTasks from './ListTasks'
 import InputTasks from "./InputTasks";
+import Navigation from "./Navigation";
 
 // **ChatGPT contributed significantly to this code**
 
@@ -72,7 +73,7 @@ const Checklist = () => {
 
   return (
     <div>
-      <ul className="checkList">
+      {/* <ul className="checkList">
         {items.map((item) => (
           <li
             className="mainListItem"
@@ -115,7 +116,8 @@ const Checklist = () => {
             +
           </button>
         </li>
-      </ul>
+      </ul> */}
+      <Navigation />
       <InputTasks />
       <ListTasks />
     </div>

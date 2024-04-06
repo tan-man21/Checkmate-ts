@@ -8,7 +8,7 @@ module.exports = {
     host: "localhost",
     port: process.env.DB_PORT,
     dialect: "postgres"
-  }
+  },
   // "test": {
   //   "username": "root",
   //   "password": null,
@@ -16,11 +16,8 @@ module.exports = {
   //   "host": "127.0.0.1",
   //   "dialect": "mysql"
   // },
-  // "production": {
-  //   "username": "root",
-  //   "password": null,
-  //   "database": "database_production",
-  //   "host": "127.0.0.1",
-  //   "dialect": "mysql"
-  // }
+  production: {
+    use_env_variable: "DB_CONNECTION",
+    dialect: "postgres"
+  }
 }

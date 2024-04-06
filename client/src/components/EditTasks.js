@@ -19,7 +19,7 @@ const EditTasks = ({task}) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(body)
             })
-            window.location = '/'
+            window.location = '/tasks'
         } catch (error) {
             console.error(error.message)
         }
