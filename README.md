@@ -74,6 +74,7 @@ To run the application locally, change to client folder. Then run 'npm install'.
 
 <br><br>
 <hr>
+
 ## Furture enhancements
 
 - Add a sub tasks as an option for each task item
