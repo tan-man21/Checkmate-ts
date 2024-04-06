@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../App.css";
+import ListTasks from './ListTasks'
+import InputTasks from "./InputTasks";
 
 // **ChatGPT contributed significantly to this code**
 
@@ -114,6 +116,8 @@ const Checklist = () => {
           </button>
         </li>
       </ul>
+      <InputTasks />
+      <ListTasks />
     </div>
   );
 };
