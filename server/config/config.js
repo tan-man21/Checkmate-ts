@@ -5,8 +5,8 @@ module.exports = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    host: "raja.db.elephantsql.com",
-    // port: process.env.DB_PORT,
+    host: "localhost",
+    port: process.env.DB_PORT,
     dialect: "postgres"
   }
   // "test": {
