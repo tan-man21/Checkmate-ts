@@ -3,6 +3,8 @@ Milestone Project 2 - PERN stack
 
 link: https://checkmate-7v5b.onrender.com
 
+GitHub: https://github.com/edwardgreenwood38/Checkmate
+
 A To-Do Task List for multiple users allowing each user to be able to create multiple lists with tasks and sub-tasks.
 
 <br>
