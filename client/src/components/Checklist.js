@@ -6,7 +6,7 @@ import ListTasks from "./ListTasks";
 import InputTasks from "./InputTasks";
 import EditTasks from "./EditTasks";
 
-// **ChatGPT contributed significantly to this code**
+// **ChatGPT contributed significantly to Nathan's code**
 
 // sets up checklist shell
 const Checklist = () => {
@@ -96,11 +96,6 @@ const Checklist = () => {
 
   return (
     <div>
-      <div>
-        {/* Josh's code */}
-        <Navigation />
-        {/* Josh's code */}
-      </div>
       <div className="checkListDiv">
         <button className="listTypeButton" onClick={toggleListType}>
           {listType === "ul" ? "Numbered" : "Bulleted"}
@@ -218,9 +213,11 @@ const Checklist = () => {
             </li>
           </ol>
         )}
-      {/* Tanner's code
-        <InputTasks />
-        <ListTasks /> */}
+      {/* Josh's code */}
+      <Navigation />
+      {/* Tanner's code */}
+      <InputTasks />
+      <ListTasks />
       </div>
     </div>
   );

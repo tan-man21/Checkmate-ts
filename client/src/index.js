@@ -10,11 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const root = createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-{/*     <div className="app-container">
-    <App />
-    </div> */}
-    <div className="checkList-container">
-      <Checklist />
+    <div>
+      <App />
     </div>
   </React.StrictMode>
 );
