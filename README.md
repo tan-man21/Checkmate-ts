@@ -58,10 +58,11 @@ To run the application locally, change to client folder. Then run 'npm install'.
  - Show active lists
  - Button to show completed list
  - Button to create new list
+ - Button to switch between unordered and ordered list (future update)
  - Show list items (expand/collapse)
  - Add/Remove/Edit items
  - Checkmark for completion
- - Add subtasks
+ - Add subtasks (future update)
  - Clone history (optional)
  - Personalized login (optional)
 

@@ -19,18 +19,20 @@ const EditTasks = ({task}) => {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(body)
             })
+
             window.location = '/tasks'
+
         } catch (error) {
             console.error(error.message)
         }
     }
-  
+
     return (
       <>
         <Button variant="warning" onClick={handleShow}>
           Edit
         </Button>
-  
+
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Edit Task</Modal.Title>

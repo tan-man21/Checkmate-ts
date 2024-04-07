@@ -1,8 +1,13 @@
+/* .app-container {
+  position: absolute;
+  width: 100%;
+}
 
-/* .App {
-  text-align: center;
+.checkList-container {
+  position: absolute;
+  width: 100%;
+  top: 60rem;
 } */
-
 
 .heroContainer {
   display: flex;
@@ -10,7 +15,7 @@
   max-width: 100%;
   max-height: 90vh;
   height: 80vh;
-  background-image: url('./components/chess.jpg');
+  background-image: url("./components/chess.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -21,22 +26,15 @@
 }
 
 .heroText {
-  text-shadow:
-        0.05em 0 black,
-        0 0.05em black,
-        -0.05em 0 black,
-        0 -0.05em black,
-        -0.05em -0.05em black,
-        -0.05em 0.05em black,
-        0.05em -0.05em black,
-        0.05em 0.05em black;
+  text-shadow: 0.05em 0 black, 0 0.05em black, -0.05em 0 black, 0 -0.05em black,
+    -0.05em -0.05em black, -0.05em 0.05em black, 0.05em -0.05em black,
+    0.05em 0.05em black;
 }
 
 .descriptiveContainer {
   text-align: center;
   height: 15vh;
 }
-
 
 .listItem {
   border: 3px solid black;
@@ -48,9 +46,8 @@
 
 .pullIn {
   opacity: 1;
-  transform: translateX(0)
+  transform: translateX(0);
 }
-
 
 .descripDiv {
   border-left: 2px solid slategray;
@@ -69,6 +66,7 @@
   height: 1.5rem;
   margin-top: 1rem;
   padding-bottom: 0.25rem;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .addSubItem {
@@ -91,14 +89,28 @@
 
 .checkBox {
   margin-right: 0.5rem;
+  margin-left: 0.5rem;
   background-color: black;
 }
 
 .checkList {
-  border: 1px solid black;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-top: 1rem;
+  padding: 1rem 1rem 1rem 2rem;
+  margin-top: 0.5rem;
+}
+
+/* .checkList-body {
+border-top: 1rem double black;
+} */
+
+.checkListDiv {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 3rem;
+  margin-left: 1rem white;
+  margin-right: 1rem white;
+  background-color: gray;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .checkLogo {
@@ -109,8 +121,53 @@
   /*   left: 0; */
 }
 
+.deleteButton {
+  color: #f5f5f5;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 1.5rem;
+  margin-right: 1rem;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
 .firstItem {
   border-top: 0.25rem solid #d2b48c;
+}
+
+.leftLiContent,
+.rightLiContent {
+display: inline-block;
+vertical-align: middle;
+}
+
+.leftLiContent {
+  width: calc(100% - 5rem);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.leftLiContent > * {
+  display: inline-flex;
+  justify-content: center;
+}
+
+.listTypeButton {
+  color: #f5f5f5;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.5rem;
+  height: 1.5rem;
+  margin-top: 1rem;
+  padding-bottom: 0.25rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
 }
 
 .logoDiv {
@@ -127,8 +184,31 @@
   /*   position: relative; */
 }
 
-/* .mainListItem {
+.mainListItem {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #333;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* .mainListItem::before {
+  content: counter(listItemCounter);
+  counter-increment: listItemCounter;
+  margin-right: 1rem;
+  float: left;
+  position: absolute;
+  left: 1rem;
 } */
+
+.mainListItem:nth-child(odd) {
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.mainListItem:nth-child(even) {
+  background-color: lightgray;
+  color: black;
+}
 
 .nav-item {
   font-size: 2.5rem;
@@ -150,6 +230,12 @@
   color: white;
 }
 
+.rightLiContent {
+text-align: right;
+width: 5rem;
+overflow: hidden;
+}
+
 .sidebar {
   width: 15rem;
   height: 100vh;
@@ -160,7 +246,6 @@
   flex-direction: column;
   align-items: center;
 }
-
 
 footer {
   text-align: left;
