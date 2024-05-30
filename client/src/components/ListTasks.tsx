@@ -1,17 +1,22 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import EditTasks from './EditTasks';
 
+interface Task {
+    sub_task_id: number;
+    sub_task_name: string;
+}
+
 const ListTasks = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
 
     //delete function
-    const deleteTask = async id => {
+    const deleteTask = async (id: number) => {
         try {
             const deleteTask = await fetch(`http://localhost:4000/subtasks/${id}`, {
                 method: 'DELETE'
             });
             setTasks(tasks.filter(task => task.sub_task_id !== id))
-        } catch (error) {
+        } catch (error: any) {
             console.error(error.message)
         }
     }
@@ -22,7 +27,7 @@ const ListTasks = () => {
             const jsonData = await response.json()
 
             setTasks(jsonData)
-        } catch (error) {
+        } catch (error: any) {
             console.error(error.message)
         }
     }
@@ -59,5 +64,7 @@ const ListTasks = () => {
     </Fragment>
     )
 }
+
+export type {Task}
 
 export default ListTasks

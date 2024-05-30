@@ -24,80 +24,80 @@ const Checklist = () => {
   };
 
   // removes text input box when clicked outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (inputRef.current && !inputRef.current.contains(event.target)) {
-        whenClickedAway();
-      }
-    };
+  // useEffect(() => {
+  //   const handleClickOutside = (event) => {
+  //     if (inputRef.current && !inputRef.current.contains(event.target)) {
+  //       whenClickedAway();
+  //     }
+  //   };
 
-    const handleKeyPress = (event) => {
-      if (event.key === "Enter") {
-        whenClickedAway();
-      }
-    };
+  //   const handleKeyPress = (event) => {
+  //     if (event.key === "Enter") {
+  //       whenClickedAway();
+  //     }
+  //   };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, []);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   document.addEventListener("keydown", handleKeyPress);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //     document.removeEventListener("keydown", handleKeyPress);
+  //   };
+  // }, []);
 
-  // opens text input box when the input is clicked on
-  const whenClickedOn = (id, event) => {
-    if (event.target.tagName === "INPUT") return;
-    if (editItemId === id) {
-      return;
-    }
-    setEditItemId(id);
-  };
+  // // opens text input box when the input is clicked on
+  // const whenClickedOn = (id, event) => {
+  //   if (event.target.tagName === "INPUT") return;
+  //   if (editItemId === id) {
+  //     return;
+  //   }
+  //   setEditItemId(id);
+  // };
 
-  // sets input box to null(disappear) when clicked outside input
-  const whenClickedAway = () => {
-    setEditItemId(null);
-  };
+  // // sets input box to null(disappear) when clicked outside input
+  // const whenClickedAway = () => {
+  //   setEditItemId(null);
+  // };
 
-  // sets text in input box to new text
-  const updateText = (id, newText) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, text: newText } : item
-      )
-    );
-  };
+  // // sets text in input box to new text
+  // const updateText = (id, newText) => {
+  //   setItems((prevItems) =>
+  //     prevItems.map((item) =>
+  //       item.id === id ? { ...item, text: newText } : item
+  //     )
+  //   );
+  // };
 
-  // switches the checkmark state of an item
-  const toggleChecked = (id) => {
-    setItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, checked: !item.checked } : item
-      )
-    );
-  };
+  // // switches the checkmark state of an item
+  // const toggleChecked = (id) => {
+  //   setItems((prevItems) =>
+  //     prevItems.map((item) =>
+  //       item.id === id ? { ...item, checked: !item.checked } : item
+  //     )
+  //   );
+  // };
 
-  const createNewListItem = () => {
-    const newListItem = {
-      id: nextId,
-      text: inputText,
-      checked: false,
-      subItems: [],
-    };
-    setItems([...items, newListItem]);
-    setNextId(nextId + 1);
-    setInputText("");
-    setEditItemId(newListItem.id);
-  };
+  // const createNewListItem = () => {
+  //   const newListItem = {
+  //     id: nextId,
+  //     text: inputText,
+  //     checked: false,
+  //     subItems: [],
+  //   };
+  //   setItems([...items, newListItem]);
+  //   setNextId(nextId + 1);
+  //   setInputText("");
+  //   setEditItemId(newListItem.id);
+  // };
 
-  const deleteListItem = (id) => {
-    setItems(items.filter((item) => item.id != id));
-  };
+  // const deleteListItem = (id) => {
+  //   setItems(items.filter((item) => item.id != id));
+  // };
 
   return (
     <div>
       <div className="checkListDiv">
-        <button className="listTypeButton" onClick={toggleListType}>
+        {/* <button className="listTypeButton" onClick={toggleListType}>
           {listType === "ul" ? "Numbered" : "Bulleted"}
         </button>
         {listType === "ul" ? (
@@ -209,10 +209,10 @@ const Checklist = () => {
             <li className="addItem">
               <button className="addItemButton" onClick={createNewListItem}>
                 +
-              </button>
-            </li>
-          </ol>
-        )}
+              </button> */}
+            {/* </li>
+          </ol> */}
+        {/* )} */}
       {/* Josh's code */}
       <Navigation />
       {/* Tanner's code */}

@@ -1,16 +1,23 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
+import {Task} from './ListTasks'
+import { useNavigate } from 'react-router-dom';
 
-const EditTasks = ({task}) => {
+interface EditTaskProps {
+  task: Task
+}
+
+const EditTasks = ({task}: EditTaskProps) => {
     const [show, setShow] = useState(false);
     const [sub_task_name, setTaskName] = useState(task.sub_task_name)
+    const navigate = useNavigate()
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     //edit
-    const updateTaskName = async e => {
+    const updateTaskName = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         try {
             const body = {sub_task_name};
@@ -20,9 +27,9 @@ const EditTasks = ({task}) => {
                 body: JSON.stringify(body)
             })
 
-            window.location = '/tasks'
+            navigate('/tasks')
 
-        } catch (error) {
+        } catch (error: any) {
             console.error(error.message)
         }
     }

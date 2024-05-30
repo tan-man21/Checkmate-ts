@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const InputTasks = () => {
     const [sub_task_name, setTaskName] = useState('')
+    const navigate = useNavigate()
 
-    const onSubmitForm = async e => {
+    const onSubmitForm = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         try {
             const body = {sub_task_name};
@@ -13,9 +15,9 @@ const InputTasks = () => {
                 body: JSON.stringify(body)
             })
 
-            window.location = '/tasks'
+            navigate('/tasks')
 
-        } catch (error) {
+        } catch (error: any) {
             console.error(error.message)
         } 
     }
