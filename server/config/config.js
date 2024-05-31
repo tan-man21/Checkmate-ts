@@ -17,7 +17,11 @@ module.exports = {
   //   "dialect": "mysql"
   // },
   production: {
-    use_env_variable: "DB_CONNECTION",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+    host: "localhost",
+    port: process.env.DB_PORT,
     dialect: "postgres"
   }
 }
